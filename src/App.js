@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { squaresDifference } from './utils/calculations';
 
 class App extends Component {
   constructor() {
@@ -7,6 +8,7 @@ class App extends Component {
 
     this.state = {
       inputValue: '',
+      solution: 0,
       networkRequests: []
     }
 
@@ -19,7 +21,8 @@ class App extends Component {
   }
 
   onSend() {
-    console.log('Sending', this.state.inputValue);
+    const solution = squaresDifference(parseFloat(this.state.inputValue));
+    this.setState({ solution });
   }
 
   render() {
@@ -27,6 +30,7 @@ class App extends Component {
       <div className="App">
         <input value = {this.state.inputValue || ''} type="number" onChange={this.handleInputChange} />
         <button onClick={this.onSend}>Send</button>
+        Solution: {this.state.solution}
       </div>
     );
   }
