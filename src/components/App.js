@@ -26,6 +26,10 @@ class App extends Component {
 
   async calculate() {
     const { inputValue } = this.state;
+    if (!inputValue) {
+      return;
+    }
+
     const response = await this.httpClient.post('/api/calculate', { inputValue });
     this.setState({ 
       solutionValue: response.value,

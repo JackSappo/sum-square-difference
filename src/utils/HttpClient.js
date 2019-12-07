@@ -2,15 +2,7 @@ import { squaresDifference } from './calculations';
 
 class HttpClient {
   constructor() {
-    this.calls = {
-      /*
-      inputValue: {
-        value: 0,
-        last_datetime: Date,
-        occurrences: 0
-      }
-      */
-    }
+    this.calls = {};
   }
 
   get(url) {}
@@ -19,22 +11,45 @@ class HttpClient {
     const endpoint = url.replace('/api/', '');
     const { inputValue } = payload;
 
-    // This is where we would normally do the actual call to server
+    // (This is where we would normally do the actual call to server)
 
     switch (endpoint) {
       case 'calculate':
-        const value = squaresDifference(inputValue);
-        const response = {
-          datetime: new Date().toISOString(),
-          value,
-          number: inputValue,
-          occurrences: 'to-do',
-          last_datetime: 'to-do'
-        }
-
-        return Promise.resolve(response);
+        return this._calculate(inputValue);
       default:
         return null;
+    }
+  }
+
+  _calculate(inputValue) {
+    const cachedResponse = this.calls[inputValue];
+
+    const response = cachedResponse ? 
+      {
+        value: cachedResponse.value,
+        last_datetime: cachedResponse['last_datetime'],
+        occurrences: cachedResponse.occurrences + 1
+      } : {
+        value: squaresDifference(inputValue),
+        last_datetime: null,
+        occurrences: 1
+      };
+
+    response.datetime = new Date().toISOString();
+    response.number = inputValue;
+
+    this._memoize(response);
+    return Promise.resolve(response);
+  }
+
+  _memoize(response) {
+    const { datetime, value, number, occurrences } = response;
+
+    this.calls[number] = {
+      value,
+      number,
+      last_datetime: datetime,
+      occurrences
     }
   }
 }
