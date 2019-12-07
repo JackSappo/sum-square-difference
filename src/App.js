@@ -8,7 +8,7 @@ class App extends Component {
 
     this.state = {
       inputValue: '',
-      solution: 0,
+      solutionValue: 0,
       networkRequests: []
     }
 
@@ -21,8 +21,14 @@ class App extends Component {
   }
 
   async onSend() {
-    const solution = await squaresDifference(parseFloat(this.state.inputValue));
-    this.setState({ solution });
+    const payload = await squaresDifference(parseFloat(this.state.inputValue));
+    this.setState({ 
+      solutionValue: payload.value,
+      networkRequests: [
+        ...this.state.networkRequests,
+        payload
+      ]
+    });
   }
 
   render() {
@@ -30,7 +36,7 @@ class App extends Component {
       <div className="App">
         <input value = {this.state.inputValue || ''} type="number" onChange={this.handleInputChange} />
         <button onClick={this.onSend}>Send</button>
-        Solution: {this.state.solution}
+        Solution: {this.state.solutionValue}
       </div>
     );
   }
