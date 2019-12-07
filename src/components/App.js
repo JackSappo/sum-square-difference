@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../assets/stylesheets/App.css';
+import { UserInput } from './UserInput';
 import { NetworkRequests } from './NetworkRequests';
 import { squaresDifference } from '../utils/calculations';
 
@@ -13,15 +14,15 @@ class App extends Component {
       networkRequests: []
     }
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.onSend = this.onSend.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
+    this.calculate = this.calculate.bind(this);
   }
 
-  handleInputChange(e) {
+  onInputChange(e) {
     this.setState({ inputValue: e.target.value });
   }
 
-  async onSend() {
+  async calculate() {
     const payload = await squaresDifference(this.state.inputValue);
     this.setState({ 
       solutionValue: payload.value,
@@ -38,9 +39,12 @@ class App extends Component {
     return (
       <div className="App">
         <div id="main">
-          <input value = {inputValue || ''} type="number" onChange={this.handleInputChange} />
-          <button onClick={this.onSend}>Send</button>
-          Solution: {solutionValue}
+          <UserInput
+            inputValue={inputValue}
+            onInputChange={this.onInputChange}
+            calculate={this.calculate}
+            solutionValue={solutionValue}
+          />
         </div>
         <NetworkRequests networkRequests={networkRequests}/>
       </div>
