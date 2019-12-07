@@ -22,12 +22,12 @@ class App extends Component {
   }
 
   async onSend() {
-    const payload = await squaresDifference(parseFloat(this.state.inputValue));
+    const payload = await squaresDifference(this.state.inputValue);
     this.setState({ 
       solutionValue: payload.value,
       networkRequests: [
-        ...this.state.networkRequests,
-        payload
+        payload,
+        ...this.state.networkRequests
       ]
     });
   }

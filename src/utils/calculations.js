@@ -15,6 +15,10 @@ function squareFirstNSum(n) {
 }
 
 export function squaresDifference(n) {
+  if (typeof n !== 'number') {
+    n = parseFloat(n);
+  }
+
   const value = squareFirstNSum(n) - sumFirstNSquares(n);
   const payload = {
     datetime: new Date().toISOString(),
