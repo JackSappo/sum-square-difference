@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
-import { squaresDifference } from './utils/calculations';
+import '../assets/stylesheets/App.css';
+import { squaresDifference } from '../utils/calculations';
 
 class App extends Component {
   constructor() {
