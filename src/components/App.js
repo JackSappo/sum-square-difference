@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../assets/stylesheets/App.css';
+import { NetworkRequests } from './NetworkRequests';
 import { squaresDifference } from '../utils/calculations';
 
 class App extends Component {
@@ -32,11 +33,16 @@ class App extends Component {
   }
 
   render() {
+    const { inputValue, networkRequests, solutionValue } = this.state
+
     return (
       <div className="App">
-        <input value = {this.state.inputValue || ''} type="number" onChange={this.handleInputChange} />
-        <button onClick={this.onSend}>Send</button>
-        Solution: {this.state.solutionValue}
+        <div id="main">
+          <input value = {inputValue || ''} type="number" onChange={this.handleInputChange} />
+          <button onClick={this.onSend}>Send</button>
+          Solution: {solutionValue}
+        </div>
+        <NetworkRequests networkRequests={networkRequests}/>
       </div>
     );
   }
