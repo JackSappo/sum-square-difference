@@ -19,13 +19,5 @@ export function squaresDifference(n) {
     n = parseFloat(n);
   }
 
-  const value = squareFirstNSum(n) - sumFirstNSquares(n);
-  const payload = {
-    datetime: new Date().toISOString(),
-    value,
-    number: n,
-    occurrences: 'to-do',
-    last_datetime: 'to-do'
-  }
-  return Promise.resolve(payload);
+  return squareFirstNSum(n) - sumFirstNSquares(n);
 }

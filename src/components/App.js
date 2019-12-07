@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../assets/stylesheets/App.css';
 import { UserInput } from './UserInput';
 import { NetworkRequests } from './NetworkRequests';
-import { squaresDifference } from '../utils/calculations';
+import HttpClient from '../utils/HttpClient';
 
 class App extends Component {
   constructor() {
@@ -12,7 +12,9 @@ class App extends Component {
       inputValue: '',
       solutionValue: 0,
       networkRequests: []
-    }
+    };
+
+    this.httpClient = new HttpClient();
 
     this.onInputChange = this.onInputChange.bind(this);
     this.calculate = this.calculate.bind(this);
@@ -23,11 +25,12 @@ class App extends Component {
   }
 
   async calculate() {
-    const payload = await squaresDifference(this.state.inputValue);
+    const { inputValue } = this.state;
+    const response = await this.httpClient.post('/api/calculate', { inputValue });
     this.setState({ 
-      solutionValue: payload.value,
+      solutionValue: response.value,
       networkRequests: [
-        payload,
+        response,
         ...this.state.networkRequests
       ]
     });
