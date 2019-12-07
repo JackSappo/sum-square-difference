@@ -20,8 +20,8 @@ class App extends Component {
     this.setState({ inputValue: e.target.value });
   }
 
-  onSend() {
-    const solution = squaresDifference(parseFloat(this.state.inputValue));
+  async onSend() {
+    const solution = await squaresDifference(parseFloat(this.state.inputValue));
     this.setState({ solution });
   }
 

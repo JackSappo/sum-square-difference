@@ -15,5 +15,6 @@ function squareFirstNSum(n) {
 }
 
 export function squaresDifference(n) {
-  return squareFirstNSum(n) - sumFirstNSquares(n);
+  const solution = squareFirstNSum(n) - sumFirstNSquares(n);
+  return Promise.resolve(solution);
 }
