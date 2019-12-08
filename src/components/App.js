@@ -37,7 +37,7 @@ class App extends Component {
       return;
     }
 
-    this.setState({ loading: true })
+    this.setState({ loading: true });
 
     const response = await this.httpClient.post('/api/calculate', {
       inputValue

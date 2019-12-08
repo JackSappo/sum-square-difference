@@ -46,5 +46,5 @@ describe('<UserInput />', () => {
         expect(wrapper.find(selector)).toHaveLength(1);
       });
     });
-  })
+  });
 });
