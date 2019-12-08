@@ -1,11 +1,11 @@
 import React from 'react';
 
 export function NetworkRequest(props) {
-  const { payload } = props;
+  const { label, payload } = props;
 
   return (
     <div className="network-request">
-      {payload.number} => {payload.value}
+      <b>{label}:</b> {JSON.stringify(payload, null, 2)}
     </div>
   )
 }

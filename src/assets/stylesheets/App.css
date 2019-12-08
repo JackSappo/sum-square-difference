@@ -41,4 +41,5 @@
   border-top: 1px solid black;
   overflow-y: scroll;
   max-height: 35vh;
+  font-size: 10px;
 }
