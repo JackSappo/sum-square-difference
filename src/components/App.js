@@ -10,6 +10,7 @@ class App extends Component {
 
     this.state = {
       inputValue: '',
+      loading: false,
       solutionValue: 0,
       networkRequests: []
     };
@@ -36,23 +37,27 @@ class App extends Component {
       return;
     }
 
+    this.setState({ loading: true })
+
     const response = await this.httpClient.post('/api/calculate', {
       inputValue
     });
     this.setState({
+      loading: false,
       solutionValue: response.value,
       networkRequests: [response, ...this.state.networkRequests]
     });
   }
 
   render() {
-    const { inputValue, networkRequests, solutionValue } = this.state;
+    const { inputValue, loading, networkRequests, solutionValue } = this.state;
 
     return (
       <div className="App">
         <div id="main">
           <UserInput
             inputValue={inputValue}
+            loading={loading}
             onInputChange={this.onInputChange}
             calculate={this.calculate}
             solutionValue={solutionValue}

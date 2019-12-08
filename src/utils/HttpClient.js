@@ -5,9 +5,9 @@ class HttpClient {
     this.calls = {};
   }
 
-  get(url) {}
+  async get(url) {}
 
-  post(url, payload) {
+  async post(url, payload) {
     const endpoint = url.replace('/api/', '');
     const { inputValue } = payload;
 
@@ -22,7 +22,7 @@ class HttpClient {
     }
   }
 
-  _calculate(inputValue) {
+  async _calculate(inputValue) {
     const parsedValue = parseInt(inputValue);
     const cachedResponse = this.calls[parsedValue];
 
@@ -33,7 +33,7 @@ class HttpClient {
           occurrences: cachedResponse.occurrences + 1
         }
       : {
-          value: squaresDifference(parsedValue),
+          value: await squaresDifference(parsedValue),
           last_datetime: null,
           occurrences: 1
         };

@@ -1,7 +1,7 @@
 import React from 'react';
 
 export function UserInput(props) {
-  const { inputValue = '', onInputChange, calculate, solutionValue } = props;
+  const { inputValue = '', loading, onInputChange, calculate, solutionValue } = props;
 
   return (
     <div className="user-input-container">
@@ -10,7 +10,7 @@ export function UserInput(props) {
         <button onClick={calculate}>Calculate</button>
       </div>
       <div className="solution">
-        <b>Solution</b>: {solutionValue}
+        <b>Solution</b>: {loading ? 'LOADING': solutionValue}
       </div>
     </div>
   );
