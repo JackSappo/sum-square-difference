@@ -11,7 +11,8 @@ class HttpClient {
     const endpoint = url.replace('/api/', '');
     const { inputValue } = payload;
 
-    // (This is where we would normally do the actual call to server)
+    // This is where we would normally do the actual call to server.
+    // If this were the case, memoization would need to happen before this step.
 
     switch (endpoint) {
       case 'calculate':
