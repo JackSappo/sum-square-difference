@@ -23,19 +23,20 @@ class HttpClient {
   }
 
   _calculate(inputValue) {
-    const parsedValue = parseInt(inputValue)
+    const parsedValue = parseInt(inputValue);
     const cachedResponse = this.calls[parsedValue];
 
-    const response = cachedResponse ? 
-      {
-        value: cachedResponse.value,
-        last_datetime: cachedResponse['last_datetime'],
-        occurrences: cachedResponse.occurrences + 1
-      } : {
-        value: squaresDifference(parsedValue),
-        last_datetime: null,
-        occurrences: 1
-      };
+    const response = cachedResponse
+      ? {
+          value: cachedResponse.value,
+          last_datetime: cachedResponse['last_datetime'],
+          occurrences: cachedResponse.occurrences + 1
+        }
+      : {
+          value: squaresDifference(parsedValue),
+          last_datetime: null,
+          occurrences: 1
+        };
 
     response.datetime = new Date().toISOString();
     response.number = parsedValue;
@@ -52,7 +53,7 @@ class HttpClient {
       number,
       last_datetime: datetime,
       occurrences
-    }
+    };
   }
 }
 

@@ -15,11 +15,11 @@ describe('<UserInput />', () => {
     {
       element: 'solution label',
       selector: '.solution'
-    },
-  ].forEach(({element, selector}) => {
+    }
+  ].forEach(({ element, selector }) => {
     it(`renders a(n) ${element} element`, () => {
       const wrapper = shallow(<UserInput />);
       expect(wrapper.find(selector)).toHaveLength(1);
-    })
-  })
+    });
+  });
 });

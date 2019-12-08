@@ -30,11 +30,11 @@ describe('calculations', () => {
       {
         n: 500,
         expected: 15645770750
-      },
-    ].forEach(({n, expected}) => {
+      }
+    ].forEach(({ n, expected }) => {
       it(`should calculate for n of ${n}`, () => {
         expect(squaresDifference(n)).toEqual(expected);
-      })
-    })
-  })
-})
+      });
+    });
+  });
+});

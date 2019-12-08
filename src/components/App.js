@@ -36,18 +36,17 @@ class App extends Component {
       return;
     }
 
-    const response = await this.httpClient.post('/api/calculate', { inputValue });
-    this.setState({ 
+    const response = await this.httpClient.post('/api/calculate', {
+      inputValue
+    });
+    this.setState({
       solutionValue: response.value,
-      networkRequests: [
-        response,
-        ...this.state.networkRequests
-      ]
+      networkRequests: [response, ...this.state.networkRequests]
     });
   }
 
   render() {
-    const { inputValue, networkRequests, solutionValue } = this.state
+    const { inputValue, networkRequests, solutionValue } = this.state;
 
     return (
       <div className="App">
@@ -59,7 +58,7 @@ class App extends Component {
             solutionValue={solutionValue}
           />
         </div>
-        <NetworkRequests networkRequests={networkRequests}/>
+        <NetworkRequests networkRequests={networkRequests} />
       </div>
     );
   }

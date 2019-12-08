@@ -11,6 +11,6 @@ describe('<NetworkRequests />', () => {
         <NetworkRequests networkRequests={networkRequests} />
       );
       expect(wrapper.find(NetworkRequest)).toHaveLength(n);
-    })
-  })
+    });
+  });
 });
