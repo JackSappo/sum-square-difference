@@ -3,6 +3,7 @@ import { NetworkRequest } from './NetworkRequest'
 
 export function NetworkRequests(props) {
   const requestCount = props.networkRequests.length;
+  
   return (
     <div id="network-requests">
       {props.networkRequests.map(

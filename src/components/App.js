@@ -21,6 +21,11 @@ class App extends Component {
   }
 
   onInputChange(e) {
+    const inputValue = e.target.value;
+    if (!inputValue.match(/^[0-9]*$/)) {
+      return;
+    }
+
     this.setState({ inputValue: e.target.value });
   }
 

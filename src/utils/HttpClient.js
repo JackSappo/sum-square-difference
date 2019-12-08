@@ -22,7 +22,8 @@ class HttpClient {
   }
 
   _calculate(inputValue) {
-    const cachedResponse = this.calls[inputValue];
+    const parsedValue = parseInt(inputValue)
+    const cachedResponse = this.calls[parsedValue];
 
     const response = cachedResponse ? 
       {
@@ -30,13 +31,13 @@ class HttpClient {
         last_datetime: cachedResponse['last_datetime'],
         occurrences: cachedResponse.occurrences + 1
       } : {
-        value: squaresDifference(inputValue),
+        value: squaresDifference(parsedValue),
         last_datetime: null,
         occurrences: 1
       };
 
     response.datetime = new Date().toISOString();
-    response.number = inputValue;
+    response.number = parsedValue;
 
     this._memoize(response);
     return Promise.resolve(response);

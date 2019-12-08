@@ -16,7 +16,7 @@ function squareFirstNSum(n) {
 
 export function squaresDifference(n) {
   if (typeof n !== 'number') {
-    n = parseFloat(n);
+    n = parseInt(n);
   }
 
   return squareFirstNSum(n) - sumFirstNSquares(n);

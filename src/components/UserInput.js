@@ -6,7 +6,7 @@ export function UserInput(props) {
   return (
     <div className="user-input-container">
       <div className="user-input">
-        <input value = {inputValue} type="number" onChange={onInputChange} />
+        <input value={inputValue} onChange={onInputChange} />
         <button onClick={calculate}>Calculate</button>
       </div>
       <div className="solution">
