@@ -15,4 +15,8 @@ App
   |_NetworkRequest
 ```
 
+## Additional Considerations
+* We might not want to include cached results in the list of network requests. For the purposes of this project, I left it in so that we can watch occurrences increase.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

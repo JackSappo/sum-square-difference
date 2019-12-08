@@ -14,20 +14,10 @@ function squareFirstNSum(n) {
   return Math.pow(sum, 2);
 }
 
-async function tickRandom() {
-  const ms = Math.random() * 3000;
-
-  return new Promise((resolve, reject) => {
-    setTimeout(() => { resolve() }, ms);
-  })
-}
-
-export async function squaresDifference(n) {
+export function squaresDifference(n) {
   if (typeof n !== 'number') {
     n = parseInt(n);
   }
-
-  await tickRandom();
 
   return squareFirstNSum(n) - sumFirstNSquares(n);
 }

@@ -33,7 +33,9 @@ class HttpClient {
           occurrences: cachedResponse.occurrences + 1
         }
       : {
-          value: await squaresDifference(parsedValue),
+          value: await this._fakeTimer(
+            () => squaresDifference(parsedValue)
+          ),
           last_datetime: null,
           occurrences: 1
         };
@@ -54,6 +56,14 @@ class HttpClient {
       last_datetime: datetime,
       occurrences
     };
+  }
+
+  async _fakeTimer(cb) {
+    const ms = Math.random() * 3000;
+  
+    return new Promise((resolve, reject) => {
+      setTimeout(() => { resolve(cb()) }, ms);
+    });
   }
 }
 
