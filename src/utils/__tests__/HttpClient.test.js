@@ -6,6 +6,7 @@ describe('HttpClient', () => {
 
   beforeEach(() => {
     httpClient = new HttpClient();
+    httpClient._fakeTimer = jest.fn(cb => cb())
   });
 
   describe('post', () => {
