@@ -26,12 +26,13 @@ class App extends Component {
       return;
     }
 
-    this.setState({ inputValue: e.target.value });
+    this.setState({ inputValue });
   }
 
   async calculate() {
     const { inputValue } = this.state;
-    if (!inputValue) {
+    if (!inputValue && inputValue !== 0) {
+      this.setState({ solutionValue: 0 });
       return;
     }
 
