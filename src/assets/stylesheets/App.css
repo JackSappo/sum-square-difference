@@ -30,6 +30,10 @@
   font-weight: 600;
 }
 
+.user-input button[disabled] {
+  opacity: .2;
+}
+
 .user-input-container .solution {
   margin: 6px;
 }
@@ -44,7 +48,7 @@
   font-size: 10px;
 }
 
-/* Spinner */
+/* Spinner overrides */
 .user-input-container > .solution > div {
   display: inline;
 }

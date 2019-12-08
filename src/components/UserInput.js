@@ -7,8 +7,8 @@ export function UserInput(props) {
   return (
     <div className="user-input-container">
       <div className="user-input">
-        <input value={inputValue} onChange={onInputChange} />
-        <button onClick={calculate}>Calculate</button>
+        <input value={inputValue} onChange={onInputChange} disabled={loading}/>
+        <button onClick={calculate} disabled={loading}>Calculate</button>
       </div>
       <div className="solution">
         <b>Solution</b>: {loading ? renderLoader() : solutionValue}
