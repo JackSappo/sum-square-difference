@@ -43,3 +43,8 @@
   max-height: 35vh;
   font-size: 10px;
 }
+
+/* Spinner */
+.user-input-container > .solution > div {
+  display: inline;
+}
